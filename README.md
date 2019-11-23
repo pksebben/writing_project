@@ -6,9 +6,9 @@ The goal of this project is to provide a platform for authors to engage in colla
 
 #Introduction
 
-Better.  Okay, have you ever heard of ![Exquisite Corpse?](https://en.wikipedia.org/wiki/Exquisite_corpse) 
+Better.  Okay, have you ever heard of [Exquisite Corpse?](https://en.wikipedia.org/wiki/Exquisite_corpse) 
 
-It's a surrealist game created in 1925 or 1918, depending on whether you choose to believe ![Andre](https://en.wikipedia.org/wiki/Andr%C3%A9_Breton) or ![Pierre](https://en.wikipedia.org/wiki/Pierre_Reverdy).  But they were both surrealists so obviously neither can be trusted anyhow.  But I digress.  None of that is important.  What's important is how the game is played.
+It's a surrealist game created in 1925 or 1918, depending on whether you choose to believe [Andre](https://en.wikipedia.org/wiki/Andr%C3%A9_Breton) or [Pierre](https://en.wikipedia.org/wiki/Pierre_Reverdy).  But they were both surrealists so obviously neither can be trusted anyhow.  But I digress.  None of that is important.  What's important is how the game is played.
 
 ###How the game is played
 
