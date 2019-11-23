@@ -4,13 +4,13 @@ It's a working title, don't get all bent outta shape.
 The goal of this project is to provide a platform for authors to engage in collaborative storytelling.  Shit, now I don't know how to describe it from here.  Uh...         ...hold on.
 
 
-#Introduction
+# Introduction
 
 Better.  Okay, have you ever heard of [Exquisite Corpse?](https://en.wikipedia.org/wiki/Exquisite_corpse) 
 
 It's a surrealist game created in 1925 or 1918, depending on whether you choose to believe [Andre](https://en.wikipedia.org/wiki/Andr%C3%A9_Breton) or [Pierre](https://en.wikipedia.org/wiki/Pierre_Reverdy).  But they were both surrealists so obviously neither can be trusted anyhow.  But I digress.  None of that is important.  What's important is how the game is played.
 
-###How the game is played
+### How the game is played
 
 You take a sheet of paper and fold it in thirds.  Or halves.  Or whatever division you so choose.  The point is that you fold it.
 
@@ -24,22 +24,22 @@ Congratulations! ![It's a monstrosity!](https://upload.wikimedia.org/wikipedia/c
 
 This can be done with writing, such that you only see a passage or two.  We will not be doing this.  Not, at least, at first.
 
-##Our little version
+## Our little version
 
 Instead of leaving everyone in the dark, we thought maybe it would be nice if they collaborated on a story but got to see the whole thing!  That makes it easier to develop characters, dontcha think?  Anyhow.  There are going to be at least a rule or two.  Maybe three.  Maybe a million!  But at least two. Possibly.
 
 There's actually about a bajillion rules we *could* implement around the concept of telling a story by passing a digital talking-stick, and we're going to allow users to define a lot of them in the beginning phases of the project.  More on that later.  For now, what you need to know is that this will be an online story fire, where people take turns adding to long narratives.
 
-##But, couldn't we just do this on a subreddit?
+## But, couldn't we just do this on a subreddit?
 
 We could.  That's also missing the point.  The idea is to create a focused space for people to read and to write.  Not to talk about writing or upvote each others' writing memes.  There will be the option for feedback, but it will be tied to actual writing that has been written.
 
 Also, by playing with the rules, the hope is that we get to a stage where it's engaging and fun and keeps folks coming back to make more!
 
-##On to the tech
+## On to the tech
 
 I (the royal I?) am writing the beginning of this thing in python using flask, sqlalchemy, and postgres.  Site itself is gonna live in Jinja templates.
 
-###But, there are better ways to do it!
+### But, there are better ways to do it!
 
 Then do it those ways.  These are the things I know and I started it.  If you wanna use other stuff, go right ahead, just make sure it works with this stuff.  Or go start something new.
