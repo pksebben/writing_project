@@ -20,7 +20,7 @@ The next player, using the limited information provided by the scant few lines n
 
 You continue until the page is full.  Then unfold it and collectively gaze upon what you did.
 
-Congratulations! ![It's a monstrosity!](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Andr%C3%A8_breton%2C_marcel_duhamel%2C_max_morise_e_yves_tanguy%2C_cadavre_exquis%2C_1928_%28galerie_1900-2000_parigi%29_02.jpg/800px-Andr%C3%A8_breton%2C_marcel_duhamel%2C_max_morise_e_yves_tanguy%2C_cadavre_exquis%2C_1928_%28galerie_1900-2000_parigi%29_02.jpg)
+Congratulations! [It's a monstrosity!](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Andr%C3%A8_breton%2C_marcel_duhamel%2C_max_morise_e_yves_tanguy%2C_cadavre_exquis%2C_1928_%28galerie_1900-2000_parigi%29_02.jpg/800px-Andr%C3%A8_breton%2C_marcel_duhamel%2C_max_morise_e_yves_tanguy%2C_cadavre_exquis%2C_1928_%28galerie_1900-2000_parigi%29_02.jpg)
 
 This can be done with writing, such that you only see a passage or two.  We will not be doing this.  Not, at least, at first.
 
