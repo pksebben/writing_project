@@ -37,21 +37,25 @@ def newuser():
         print(err.orig)
         return redirect('/signup/userexists')
 
+@views.route('/write/<parentchunkid>')
 @views.route('/write')
-def writesomething():
-    return render_template('writesomething.html')
+def writesomething(parentchunkid = 0):
+    if parentchunkid == 0:
+        return render_template('writesomething.html')
+    else:
+        return render_template('addsomething.html')
 
 @views.route('/read/<chunkid>')
 @views.route('/read')
 def readsomething(chunkid):
-    chunktext = read_chunk(chunkid)
-    print(chunktext)
-    return render_template('readsomething.html', chunktext=chunktext)
+    chunk = read_chunk(chunkid)
+    print(chunk.text)
+    return render_template('readsomething.html', chunk=chunk)
     
 @views.route('/submitchunk', methods=['POST'])
 def submitchunk():
     try:
-        chunkid = create_chunk(author=1,
+        chunkid = create_chunk(author=request.form['author'],
                     text=request.form['chunkbody']
         )
         addstring = '/read/' + str(chunkid)

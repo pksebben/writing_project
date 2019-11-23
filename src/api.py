@@ -24,13 +24,12 @@ def create_user(email, password, name):
         session.rollback()
         raise err.orig
 
+"""create a story chunk.  On success, returns the id of the chunk."""
 def create_chunk(author, text, parent=None, children=None):
     try:
         chunk  = Chunk(text=text,author=author, parent=parent) # should author be author.id?
         session.add(chunk)
         session.commit()
-        print("am I a dumbass?")
-        print(chunk.id)
         return chunk.id
     except IntegrityError as err:
         session.rollback()
@@ -39,7 +38,7 @@ def create_chunk(author, text, parent=None, children=None):
     
 def read_chunk(chunkid):
     try:
-        chunktext = session.query(Chunk).get(chunkid).text
-        return chunktext
+        chunk = session.query(Chunk).get(chunkid)
+        return chunk
     except Exception:
         raise

@@ -3,6 +3,16 @@
 {% block content %}
 <div>
   <h3>Your Story</h3>
-  <p>{{ chunktext }}</p>
+  <p>{{ chunk.text }}</p>
+  {% if chunk.parent %}
+  <a href="/read/{{ chunk.parent }}">Go back in time...</a>
+  {% endif %}
+  {% if chunk.children %}
+  {% for child in children %}
+  <a href="/read/{{ child }}">The story continues...</a>
+  {% endfor %}
+  {% endif %}
+    
+  <button action='/write/{{ chunkid }}'>
 </div>
 {% endblock %}
