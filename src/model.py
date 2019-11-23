@@ -1,9 +1,9 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, String, Integer, ForeignKey, Table, Text
+from sqlalchemy import Column, String, Integer, ForeignKey, Table, Text, FetchedValue
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy import create_engine
 
-import app_config
+import config
 
 
 
@@ -31,7 +31,7 @@ class UserAuth(Base):
     email = Column(String(80), unique=True, nullable=False)
 
 
-# All the useral data for a user.  Things that will be on their profile
+# All the data for a user.  Things that will be on their profile
 class UserProfile(Base):
     __tablename__ = 'user_profile'
     
@@ -46,7 +46,7 @@ class UserProfile(Base):
 class Chunk(Base):
     __tablename__ = "chunk"
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, server_default=FetchedValue())
     text = Column(Text, nullable=False)
     author = Column(Integer, ForeignKey("user.id"))
     parent = Column(Integer, ForeignKey("chunk.id"))
@@ -54,6 +54,6 @@ class Chunk(Base):
     
     
 #TODO: Factor out the engine connection string, present here and in db.py
-engine = create_engine(app_config.db_string)
+engine = create_engine(config.db_string)
 
 Base.metadata.create_all(engine)

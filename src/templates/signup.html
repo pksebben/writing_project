@@ -1,21 +1,18 @@
-<!DOCTYPE html>
+{% extends "base_content.html" %}
 
-<html>
-  <head></head>
-  <body>
-    <div class="nav">
-    </div>
-    <div class="intro">
-      <h1>We have told you our story.  Now, it is time to tell yours.</h1>
-      <form action="/newuser" method="post">
-	<input type="text" name="email" placeholder="Email">
-	<input type="text" name="password" placeholder="Password">
-	<input type="text" name="name" placeholder="Name">
-	<button>
-	  <p>sign up</p>
-	</button>
-      </form>
-    </div>
-    
-  </body>
-</html>
+{% block content %}
+
+
+<div class="intro">
+  <h1>We have told you our story.  Now, it is time to tell yours.</h1>
+  <form action="/newuser" method="post">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="password" placeholder="Password">
+    <input type="text" name="name" placeholder="Name">
+    <button>
+      <p>sign up</p>
+    </button>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_content.html" %}
+
+{% block content %}
+<div class="intro">
+    <h1>Tell us a story!</h1>
+    <h3>It was a dark and stormy night...</h3>
+    <form action="/submitchunk" method="post">
+	<input type="text" name="chunkbody" placeholder="tell your story here">
+	<button>and that is all she wrote!</button>
+    </form>
+</div>
+    
+{% endblock %}

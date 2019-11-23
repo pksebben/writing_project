@@ -1,30 +1,45 @@
 import datetime as dt
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.exc import IntegrityError
 
-import app_config
+
+import config
 from model import User, UserAuth, UserProfile, Chunk
 from exceptions import UserExistsError
 
-engine = create_engine(app_config.db_string)
+meta = MetaData()
+engine = create_engine(config.db_string)
 Session = sessionmaker(bind=engine)
 session = Session()
 
 def create_user(email, password, name):
-    q = session.query(UserAuth).filter_by(email=email)
-    if session.query(q.exists()).scalar():
-        raise UserExistsError
-    else:
+    try:
         user = User(created=dt.datetime.now())
         user.auth = UserAuth(name=name, password=password, email=email)
         session.add(user)
         session.commit()
+    except IntegrityError as err:
+        session.rollback()
+        raise err.orig
 
 def create_chunk(author, text, parent=None, children=None):
-    chunk  = Chunk(text=text,author=author, parent=parent)
-    session.add(chunk)
-    session.commit()
+    try:
+        chunk  = Chunk(text=text,author=author, parent=parent) # should author be author.id?
+        session.add(chunk)
+        session.commit()
+        print("am I a dumbass?")
+        print(chunk.id)
+        return chunk.id
+    except IntegrityError as err:
+        session.rollback()
+        raise err.orig
 
+    
 def read_chunk(chunkid):
-    raise NotImplementedError
+    try:
+        chunktext = session.query(Chunk).get(chunkid).text
+        return chunktext
+    except Exception:
+        raise
