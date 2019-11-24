@@ -5,17 +5,17 @@
   <h1>Tell us a story!</h1>
   {% if parent.id != 0 %}
   <p>{{ parent.text }}</p>
-  {% else %}
-  <h3>It was a dark and stormy night...</h3>
   {% endif %}
-    <form action="/submitchunk" method="post">
-      <input type="text" name="chunkbody" placeholder="tell your story here">
-      <input type="hidden" name="author" value={{ author }}>
+  <label for="chunk">Now, it's your turn to tell a story:</label>
+
+    <form id="write" action="/submitchunk" method="post">
       {% if parent %}
       <input type="hidden" name="parentid" value={{ parent.id }}>
       {% else %}
-      <input type="hidden" name="parentid" value='None'>
+      <input type="hidden" name="parentid" value=0>
       {% endif %}
+      <textarea id="chunk" formid="write" autocomplete="off" required="True" name="chunkbody"></textarea>
+ 
       <button>and that is all she wrote!</button>
     </form>
 </div>

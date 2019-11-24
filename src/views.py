@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, abort, redirect, request, session
 
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
-from psycopg2.errors import UniqueViolation
+from psycopg2.errors import UniqueViolation, ProgrammingError
 
 import api
 import exceptions
@@ -55,7 +55,7 @@ def newuser():
 @views.route('/write')
 def writesomething(parentchunkid = 0):
     if session['userid']:
-        return render_template('writesomething.html', parent=api.read_chunk(parentchunkid), author=session['userid'])
+        return render_template('writesomething.html', parent=api.read_chunk(parentchunkid))
     else:
         return redirect('/login/signinbeforewriting')
 
@@ -68,8 +68,10 @@ def readsomething(chunkid):
     
 @views.route('/submitchunk', methods=['POST'])
 def submitchunk():
+    print("submitting")
+    print(request.form)
     try:
-        chunkid = api.create_chunk(author=request.form['author'],
+        chunkid = api.create_chunk(author=session['userid'],
                                    text=request.form['chunkbody'],
                                    parentid=request.form['parentid']
         )
@@ -78,6 +80,8 @@ def submitchunk():
     except IntegrityError as err:
         print(err.orig)
         return redirect('/write')
+    except ProgrammingError as err:
+        raise(err.orig)
 
 
 

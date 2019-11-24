@@ -37,12 +37,16 @@ def create_user(email, password, name):
         raise err.orig
 
 """create a story chunk.  On success, returns the id of the chunk."""
-def create_chunk(author, text, parentid=None , children=None):
-    if parentid == 'None':
-        parentid = None
+def create_chunk(author, text, parentid, children=None):
+    # If parentid is special value 0, that means the chunk is a root node
+    if parentid == 0:
+        parent = None
+    else:
+        parent = session.query(Chunk).get(parentid)
+        
     try:
         chunk  = Chunk(text=text, author=author) # should author be author.id?
-        chunk.parent = session.query(Chunk).get(parentid).id
+        parent.children.append(chunk)
         session.add(chunk)
         session.commit()
         return chunk.id
