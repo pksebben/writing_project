@@ -3,3 +3,9 @@ class CreateError(Exception):
 
 class UserExistsError(CreateError):
     pass
+
+class AuthError(Exception):
+    pass
+
+class IncorrectPasswordErr(AuthError):
+    pass

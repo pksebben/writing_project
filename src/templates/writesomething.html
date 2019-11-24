@@ -2,11 +2,21 @@
 
 {% block content %}
 <div class="intro">
-    <h1>Tell us a story!</h1>
-    <h3>It was a dark and stormy night...</h3>
+  <h1>Tell us a story!</h1>
+  {% if parent.id != 0 %}
+  <p>{{ parent.text }}</p>
+  {% else %}
+  <h3>It was a dark and stormy night...</h3>
+  {% endif %}
     <form action="/submitchunk" method="post">
-	<input type="text" name="chunkbody" placeholder="tell your story here">
-	<button>and that is all she wrote!</button>
+      <input type="text" name="chunkbody" placeholder="tell your story here">
+      <input type="hidden" name="author" value={{ author }}>
+      {% if parent %}
+      <input type="hidden" name="parentid" value={{ parent.id }}>
+      {% else %}
+      <input type="hidden" name="parentid" value='None'>
+      {% endif %}
+      <button>and that is all she wrote!</button>
     </form>
 </div>
 

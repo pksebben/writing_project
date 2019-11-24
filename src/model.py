@@ -48,8 +48,8 @@ class Chunk(Base):
 
     id = Column(Integer, primary_key=True, server_default=FetchedValue())
     text = Column(Text, nullable=False)
-    author = Column(Integer, ForeignKey("user.id"))
-    parent = Column(Integer, ForeignKey("chunk.id"))
+    author = Column(Integer, ForeignKey("user.id"), nullable=False)
+    parent = Column(Integer, ForeignKey("chunk.id"), nullable=True)
     children = relationship("Chunk")
     
     

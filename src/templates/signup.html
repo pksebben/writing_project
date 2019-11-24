@@ -5,6 +5,9 @@
 
 <div class="intro">
   <h1>We have told you our story.  Now, it is time to tell yours.</h1>
+  {% if failure == "userexists" %}
+  <p>Silly goose, you have to come as yourself!  If that is you, perhaps you need to remember your <a href="/forgotpassword">secret password?</a></p>
+  {% endif %}
   <form action="/newuser" method="post">
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="password" placeholder="Password">

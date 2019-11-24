@@ -1,0 +1,23 @@
+{% extends "base_content.html" %}
+
+{% block content %}
+
+<div class="signin">
+  <h1>Welcome back, bard.  What tales bring you this night?</h1>
+  {% if failure == "passwordfailure" %}
+  <p>We're sorry, but that doesn't seem to be your password.  Are you quite sure you're not using someone else's?</p>
+  {% elif failure == "nouserfailure" %}
+  <p>Now, now.  You can't fool us!  Masquerading that way, you'll never join the party! Instead, why don't you simply <a href="/signup">RSVP?</a></p>
+  {% elif failure == "signinbeforewriting" %}
+  <p>You must log in before submitting!</p>
+  {% endif %}
+  <form action="/signin" method="post">
+    <input type="text" name="email" placeholder="Email">
+    <input type="text" name="password" placeholder="Password">
+    <button>
+      <p>sign in</p>
+    </button>
+  </form>
+</div>
+
+{% endblock %}
