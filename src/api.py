@@ -20,6 +20,7 @@ def signin(email, password):
     try:
         userauth =  session.query(UserAuth).filter_by(email=email).one()
         assert password == userauth.password
+        print("logged in userid " + str(userauth.user.id))
         sess['userid'] = userauth.user.id
     except AssertionError:
         raise exceptions.IncorrectPasswordErr
@@ -37,22 +38,27 @@ def create_user(email, password, name):
         raise err.orig
 
 """create a story chunk.  On success, returns the id of the chunk."""
-def create_chunk(author, text, parentid, children=None):
+def create_chunk(author, text, parentid=0, title=None, children=None):
     # If parentid is special value 0, that means the chunk is a root node
     if parentid == 0:
         parent = None
+        title = title
     else:
         parent = session.query(Chunk).get(parentid)
-        
     try:
-        chunk  = Chunk(text=text, author=author) # should author be author.id?
-        parent.children.append(chunk)
+        chunk  = Chunk(text=text, author=author, title=title) # should author be author.id?
+        if parent:
+            parent.children.append(chunk)
         session.add(chunk)
         session.commit()
         return chunk.id
     except IntegrityError as err:
         session.rollback()
         raise err.orig
+
+def get_index():
+    firstchapters = session.query(Chunk).filter_by(parent=None)
+    return firstchapters
 
     
 def read_chunk(chunkid):

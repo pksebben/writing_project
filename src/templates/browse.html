@@ -1,0 +1,12 @@
+{% extends "base_content.html" %}
+
+{% block content %}
+<div>
+  <h1>Welcome to the library.  Don't make a ruckus.</h1>
+  <ul>
+    {% for i in index %}
+    <li><a href="/read/{{ i.id }}">{{ i.title }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

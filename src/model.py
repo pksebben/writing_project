@@ -47,6 +47,7 @@ class Chunk(Base):
     __tablename__ = "chunk"
 
     id = Column(Integer, primary_key=True, server_default=FetchedValue())
+    title = Column(String)
     text = Column(Text, nullable=False)
     author = Column(Integer, ForeignKey("user.id"), nullable=False)
     parent = Column(Integer, ForeignKey("chunk.id"), nullable=True)

@@ -8,9 +8,11 @@
   <a href="/read/{{ chunk.parent }}">Go back in time...</a>
   {% endif %}
   {% if chunk.children %}
-  {% for child in children %}
-  <a href="/read/{{ child }}">The story continues...</a>
+  <ul>
+  {% for child in chunk.children %}
+  <li><a href="/read/{{ child.id }}">The story continues...</a></li>
   {% endfor %}
+  </ul>
   {% endif %}
     
   <a href='/write/{{ chunk.id }}'>I can take it from here...</a>

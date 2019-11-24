@@ -14,8 +14,12 @@
       {% else %}
       <input type="hidden" name="parentid" value=0>
       {% endif %}
+      {% if requiretitle %}
+      <input type="text" name="title" required="True" placeholder="Enter a title">
+      {% else %}
+      <input type="hidden" name="title" value=None>
+      {% endif %}
       <textarea id="chunk" formid="write" autocomplete="off" required="True" name="chunkbody"></textarea>
- 
       <button>and that is all she wrote!</button>
     </form>
 </div>

@@ -54,8 +54,14 @@ def newuser():
 @views.route('/write/<parentchunkid>')
 @views.route('/write')
 def writesomething(parentchunkid = 0):
+    if parentchunkid == 0:
+        print('title required')
+        requiretitle = True
+    else:
+        print('no title req')
+        requiretitle = False
     if session['userid']:
-        return render_template('writesomething.html', parent=api.read_chunk(parentchunkid))
+        return render_template('writesomething.html', parent=api.read_chunk(parentchunkid), requiretitle=requiretitle)
     else:
         return redirect('/login/signinbeforewriting')
 
@@ -73,7 +79,8 @@ def submitchunk():
     try:
         chunkid = api.create_chunk(author=session['userid'],
                                    text=request.form['chunkbody'],
-                                   parentid=request.form['parentid']
+                                   parentid=request.form['parentid'],
+                                   title=request.form['title']
         )
         addstring = '/read/' + str(chunkid)
         return redirect(addstring)
@@ -83,7 +90,10 @@ def submitchunk():
     except ProgrammingError as err:
         raise(err.orig)
 
-
+@views.route('/browse')
+def browse():
+    firstchapters = api.get_index()
+    return render_template('browse.html', index=firstchapters)
 
 # ##################################################
 # This is a testing route to make things quicker
