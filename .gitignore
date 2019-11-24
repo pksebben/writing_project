@@ -3,3 +3,4 @@ dist
 .pids
 .pants.workdir.file_lock
 .venv
+__pycache__
