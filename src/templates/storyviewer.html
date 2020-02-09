@@ -1,0 +1,40 @@
+{% extends "base_content.html" %}
+
+{% block content %}
+<div class="storyviewer">
+  <div class="contentpane">
+    <h1>{{ chunks[0].title }}</h1>
+    <ul>
+      {% for i in chunks %}
+      <li>
+	<!-- Climb the parent tree to populate -->
+	<div class="chunkpane">
+	  <div class="chunkcontent">
+	    <p>{{ i.text }}</p>
+	  </div>
+	  <div class="chunkinfo">
+	    <ul>
+	      <li><p>Author: {{ i.author }}</p></li>
+	      <li><p>Chunk number {{ chunks.index(i) + 1 }}</p></li>
+	    </ul>
+	  </div>
+	</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="addstory">
+      <label for="storyboard"/>
+      <form id="storyboard">
+	  <textarea name="chunk_text" form="storyboardxs">
+
+	  </textarea>
+	  <button>Submit chunk</button>
+      </form>
+      
+      
+  </div>
+  
+</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+* Down the rabbithole
+Might want to do a page 1 rewrite - not sure.  Do a code review before getting to work next time.
+
+
+
+*** Viewer page
+I want to get the single page working properly first and

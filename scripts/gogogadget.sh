@@ -4,8 +4,8 @@
 
 export CDPATH=$HOME
 
-cd Documents/code/Creative/writing_project
+source .venv/wp/bin/activate
 
-source .venv/dev/bin/activate
+cd Documents/code/Creative/writing_project
 
 export FLASK_APP=src/app.py
